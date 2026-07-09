@@ -862,3 +862,149 @@ html[lang="zh"] .en { display: none; }
   .hero-cta { flex-direction: column; width: 100%; }
   .btn { width: 100%; text-align: center; }
 }
+
+/* ===== BorderGlow 边缘光晕效果（忠实移植 React Bits 原版） ===== */
+.glow-card {
+  --edge-proximity: 0;
+  --cursor-angle: 45deg;
+  --edge-sensitivity: 30;
+  --color-sensitivity: calc(var(--edge-sensitivity) + 20);
+  --glow-padding: 40;
+  --cone-spread: 25;
+  --fill-opacity: 0.5;
+  --card-bg: var(--bg-card);
+
+  position: relative;
+  isolation: isolate;
+  transform: translate3d(0, 0, 0.01px);
+  overflow: visible;
+}
+
+.glow-card::before,
+.glow-card::after,
+.glow-card > .edge-light {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transition: opacity 0.25s ease-out;
+  z-index: -1;
+}
+
+.glow-card:not(:hover) > .edge-light,
+.glow-card:not(:hover)::before,
+.glow-card:not(:hover)::after {
+  opacity: 0;
+  transition: opacity 0.75s ease-in-out;
+}
+
+/* 彩色 mesh 渐变边框 — 只在鼠标方向附近的扇形可见 */
+.glow-card::before {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--card-bg) 0 100%) padding-box,
+    linear-gradient(rgb(255 255 255 / 0%) 0% 100%) border-box,
+    var(--gradient-one, radial-gradient(at 80% 55%, hsla(190, 100%, 50%, 1) 0px, transparent 50%)) border-box,
+    var(--gradient-two, radial-gradient(at 69% 34%, hsla(268, 100%, 76%, 1) 0px, transparent 50%)) border-box,
+    var(--gradient-three, radial-gradient(at 8% 6%, hsla(136, 100%, 78%, 1) 0px, transparent 50%)) border-box,
+    var(--gradient-four, radial-gradient(at 41% 38%, hsla(192, 100%, 64%, 1) 0px, transparent 50%)) border-box,
+    var(--gradient-five, radial-gradient(at 86% 85%, hsla(186, 100%, 74%, 1) 0px, transparent 50%)) border-box,
+    var(--gradient-six, radial-gradient(at 82% 18%, hsla(52, 100%, 65%, 1) 0px, transparent 50%)) border-box,
+    var(--gradient-seven, radial-gradient(at 51% 4%, hsla(12, 100%, 72%, 1) 0px, transparent 50%)) border-box,
+    var(--gradient-base, linear-gradient(#00d4ff 0 100%)) border-box;
+
+  opacity: calc((var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+
+  -webkit-mask-image:
+    conic-gradient(
+      from var(--cursor-angle) at center,
+      black calc(var(--cone-spread) * 1%),
+      transparent calc((var(--cone-spread) + 15) * 1%),
+      transparent calc((100 - var(--cone-spread) - 15) * 1%),
+      black calc((100 - var(--cone-spread)) * 1%)
+    );
+  mask-image:
+    conic-gradient(
+      from var(--cursor-angle) at center,
+      black calc(var(--cone-spread) * 1%),
+      transparent calc((var(--cone-spread) + 15) * 1%),
+      transparent calc((100 - var(--cone-spread) - 15) * 1%),
+      black calc((100 - var(--cone-spread)) * 1%)
+    );
+}
+
+/* 彩色 mesh 渐变填充 — 靠近边缘的内部着色 */
+.glow-card::after {
+  border: 1px solid transparent;
+  background:
+    var(--gradient-one, radial-gradient(at 80% 55%, hsla(190, 100%, 50%, 1) 0px, transparent 50%)) padding-box,
+    var(--gradient-two, radial-gradient(at 69% 34%, hsla(268, 100%, 76%, 1) 0px, transparent 50%)) padding-box,
+    var(--gradient-three, radial-gradient(at 8% 6%, hsla(136, 100%, 78%, 1) 0px, transparent 50%)) padding-box,
+    var(--gradient-four, radial-gradient(at 41% 38%, hsla(192, 100%, 64%, 1) 0px, transparent 50%)) padding-box,
+    var(--gradient-five, radial-gradient(at 86% 85%, hsla(186, 100%, 74%, 1) 0px, transparent 50%)) padding-box,
+    var(--gradient-six, radial-gradient(at 82% 18%, hsla(52, 100%, 65%, 1) 0px, transparent 50%)) padding-box,
+    var(--gradient-seven, radial-gradient(at 51% 4%, hsla(12, 100%, 72%, 1) 0px, transparent 50%)) padding-box,
+    var(--gradient-base, linear-gradient(#00d4ff 0 100%)) padding-box;
+
+  -webkit-mask-image:
+    linear-gradient(to bottom, black, black),
+    radial-gradient(ellipse at 50% 50%, black 40%, transparent 65%),
+    radial-gradient(ellipse at 66% 66%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 33% 33%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 66% 33%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 33% 66%, black 5%, transparent 40%),
+    conic-gradient(from var(--cursor-angle) at center, transparent 5%, black 15%, black 85%, transparent 95%);
+  mask-image:
+    linear-gradient(to bottom, black, black),
+    radial-gradient(ellipse at 50% 50%, black 40%, transparent 65%),
+    radial-gradient(ellipse at 66% 66%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 33% 33%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 66% 33%, black 5%, transparent 40%),
+    radial-gradient(ellipse at 33% 66%, black 5%, transparent 40%),
+    conic-gradient(from var(--cursor-angle) at center, transparent 5%, black 15%, black 85%, transparent 95%);
+
+  -webkit-mask-composite: source-over, source-over, source-over, source-over, source-over, source-over;
+  mask-composite: subtract, add, add, add, add, add;
+  opacity: calc(var(--fill-opacity) * (var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
+  mix-blend-mode: soft-light;
+}
+
+/* 外发光层 — 沿鼠标方向扩散的锥形光晕 */
+.glow-card > .edge-light {
+  inset: calc(var(--glow-padding) * -1px);
+  pointer-events: none;
+  z-index: 1;
+
+  -webkit-mask-image:
+    conic-gradient(
+      from var(--cursor-angle) at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%
+    );
+  mask-image:
+    conic-gradient(
+      from var(--cursor-angle) at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%
+    );
+
+  opacity: calc((var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
+  mix-blend-mode: plus-lighter;
+}
+
+.glow-card > .edge-light::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--glow-padding) * 1px);
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px var(--glow-color, hsl(190deg 100% 60% / 100%)),
+    inset 0 0 1px 0 var(--glow-color-60, hsl(190deg 100% 60% / 60%)),
+    inset 0 0 3px 0 var(--glow-color-50, hsl(190deg 100% 60% / 50%)),
+    inset 0 0 6px 0 var(--glow-color-40, hsl(190deg 100% 60% / 40%)),
+    inset 0 0 15px 0 var(--glow-color-30, hsl(190deg 100% 60% / 30%)),
+    inset 0 0 25px 2px var(--glow-color-20, hsl(190deg 100% 60% / 20%)),
+    inset 0 0 50px 2px var(--glow-color-10, hsl(190deg 100% 60% / 10%)),
+    0 0 1px 0 var(--glow-color-60, hsl(190deg 100% 60% / 60%)),
+    0 0 3px 0 var(--glow-color-50, hsl(190deg 100% 60% / 50%)),
+    0 0 6px 0 var(--glow-color-40, hsl(190deg 100% 60% / 40%)),
+    0 0 15px 0 var(--glow-color-30, hsl(190deg 100% 60% / 30%)),
+    0 0 25px 2px var(--glow-color-20, hsl(190deg 100% 60% / 20%)),
+    0 0 50px 2px var(--glow-color-10, hsl(190deg 100% 60% / 10%));
+}
