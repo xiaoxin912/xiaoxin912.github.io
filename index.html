@@ -9,6 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script async src="https://unpkg.com/es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/",
+      "gsap": "https://unpkg.com/gsap@3.12.5/index.js"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -56,6 +66,8 @@
   <!-- ===== Hero 首屏 ===== -->
   <section id="hero" class="hero">
     <div class="hero-bg">
+      <div id="blackhole-container"></div>
+      <div class="hero-vignette"></div>
       <div class="grid-overlay"></div>
       <div class="glow glow-1"></div>
       <div class="glow glow-2"></div>
@@ -431,5 +443,6 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script type="module" src="js/blackhole.js"></script>
 </body>
 </html>
