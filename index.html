@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>张淋静 | Code is poetry</title>
+  <meta name="description" content="张淋静的个人技术网站 - 大一计算机学生，主攻Java后端开发">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== 导航栏 ===== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>ZLJ<span class="logo-bracket">/&gt;</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active">
+          <span class="zh">首页</span><span class="en">Home</span>
+        </a></li>
+        <li><a href="#about" class="nav-link">
+          <span class="zh">关于</span><span class="en">About</span>
+        </a></li>
+        <li><a href="#skills" class="nav-link">
+          <span class="zh">技能</span><span class="en">Skills</span>
+        </a></li>
+        <li><a href="#projects" class="nav-link">
+          <span class="zh">项目</span><span class="en">Projects</span>
+        </a></li>
+        <li><a href="#blog" class="nav-link">
+          <span class="zh">博客</span><span class="en">Blog</span>
+        </a></li>
+        <li><a href="#contact" class="nav-link">
+          <span class="zh">联系</span><span class="en">Contact</span>
+        </a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="lang-toggle" class="icon-btn" title="切换语言">
+          <span class="zh">EN</span><span class="en">中</span>
+        </button>
+        <button id="theme-toggle" class="icon-btn" title="切换主题">
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button id="mobile-menu-toggle" class="icon-btn mobile-only" title="菜单">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero 首屏 ===== -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      <div class="grid-overlay"></div>
+      <div class="glow glow-1"></div>
+      <div class="glow glow-2"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-greeting reveal">
+        <span class="zh">👋 你好，我是</span><span class="en">👋 Hi, I'm</span>
+      </p>
+      <h1 class="hero-name reveal">张淋静</h1>
+      <p class="hero-name-en reveal">Zhang Linjing</p>
+      <div class="hero-slogan reveal">
+        <span class="terminal-line">
+          <span class="terminal-prompt">$</span>
+          <span class="typewriter"></span><span class="cursor">_</span>
+        </span>
+      </div>
+      <p class="hero-subtitle reveal">
+        <span class="zh">大一计算机学生 · Java 后端方向 · 持续学习中</span>
+        <span class="en">First-year CS Student · Java Backend · Always Learning</span>
+      </p>
+      <div class="hero-cta reveal">
+        <a href="#projects" class="btn btn-primary">
+          <span class="zh">查看作品</span><span class="en">View Projects</span>
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <span class="zh">联系我</span><span class="en">Contact Me</span>
+        </a>
+      </div>
+    </div>
+    <div class="scroll-hint reveal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- ===== 关于我 ===== -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">
+        <span class="zh">关于我</span><span class="en">About Me</span>
+      </h2>
+      <div class="about-grid">
+        <div class="about-photo reveal">
+          <div class="photo-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <p>
+              <span class="zh">你的照片</span><span class="en">Your Photo</span>
+            </p>
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <div class="about-card">
+            <h3>张淋静 <span class="text-muted">/ Zhang Linjing</span></h3>
+            <p class="about-role">
+              <span class="zh">浙大宁波理工学院 · 计算机专业 · 大一</span>
+              <span class="en">ZJUT NIT · Computer Science · Year 1</span>
+            </p>
+            <div class="about-desc zh">
+              <p>目前技能栏：C、C++、Java，主修 Java 后端方向。人生信条是"代码能跑就别动，动了一定记得 git commit"。</p>
+              <p>这个网站记录一个大一菜鸟努力升级成靠谱开发者的全过程。Bug 还会有，但我修 Bug 的速度也在变快——这大概就是成长吧。</p>
+            </div>
+            <div class="about-desc en">
+              <p>Current skill tree: C, C++, Java. Main quest: Java backend development. Life motto: "If the code runs, don't touch it. If you must, git commit first."</p>
+              <p>This site tracks my journey from a wide-eyed freshman to a (hopefully) reliable developer. Bugs will happen, but I'm getting faster at fixing them — and I guess that's what growth looks like.</p>
+            </div>
+            <div class="about-tags">
+              <span class="tag">Java</span>
+              <span class="tag">C++</span>
+              <span class="tag">C</span>
+              <span class="tag">Backend</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 技能专长 ===== -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title reveal">
+        <span class="zh">技能专长</span><span class="en">Skills</span>
+      </h2>
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
+            </div>
+            <div>
+              <h3 class="skill-name">C</h3>
+              <span class="skill-level">
+                <span class="zh">熟练</span><span class="en">Proficient</span>
+              </span>
+            </div>
+          </div>
+          <p class="skill-desc">
+            <span class="zh">编程入门语言，基础扎实，理解指针、内存管理等底层概念</span>
+            <span class="en">First programming language. Solid grasp of pointers, memory management and low-level concepts</span>
+          </p>
+          <div class="skill-bar"><div class="skill-bar-fill" data-level="80"></div></div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
+            </div>
+            <div>
+              <h3 class="skill-name">C++</h3>
+              <span class="skill-level">
+                <span class="zh">熟悉</span><span class="en">Familiar</span>
+              </span>
+            </div>
+          </div>
+          <p class="skill-desc">
+            <span class="zh">面向对象编程基础，掌握类、继承、多态、STL 等</span>
+            <span class="en">Object-oriented programming fundamentals: classes, inheritance, polymorphism, STL</span>
+          </p>
+          <div class="skill-bar"><div class="skill-bar-fill" data-level="65"></div></div>
+        </div>
+
+        <div class="skill-card reveal">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg>
+            </div>
+            <div>
+              <h3 class="skill-name">Java</h3>
+              <span class="skill-level">
+                <span class="zh">熟悉</span><span class="en">Familiar</span>
+              </span>
+            </div>
+          </div>
+          <p class="skill-desc">
+            <span class="zh">主攻方向，持续深入中。掌握面向对象、集合框架、IO 等</span>
+            <span class="en">Main focus, continuously improving. OOP, Collections, I/O and more</span>
+          </p>
+          <div class="skill-bar"><div class="skill-bar-fill" data-level="65"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 项目作品 ===== -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">
+        <span class="zh">项目作品</span><span class="en">Projects</span>
+      </h2>
+      <p class="section-subtitle reveal">
+        <span class="zh">还在学习中，这些是我接下来打算做的方向 👇</span>
+        <span class="en">Still learning — here's what I'm planning to build 👇</span>
+      </p>
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <div class="project-status">
+            <span class="status-badge">
+              <span class="zh">敬请期待</span><span class="en">Coming Soon</span>
+            </span>
+          </div>
+          <h3 class="project-title">
+            <span class="zh">Java 后端实战项目</span>
+            <span class="en">Java Backend Project</span>
+          </h3>
+          <p class="project-desc">
+            <span class="zh">学习 Spring Boot 后将动手实践一个完整的后端服务，涉及 RESTful API、数据库设计等</span>
+            <span class="en">A full backend service using Spring Boot — RESTful APIs, database design and more</span>
+          </p>
+          <div class="project-tags">
+            <span class="tag tag-small">Java</span>
+            <span class="tag tag-small">Spring Boot</span>
+            <span class="tag tag-small">MySQL</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-status">
+            <span class="status-badge">
+              <span class="zh">敬请期待</span><span class="en">Coming Soon</span>
+            </span>
+          </div>
+          <h3 class="project-title">
+            <span class="zh">C++ 课程设计</span>
+            <span class="en">C++ Course Project</span>
+          </h3>
+          <p class="project-desc">
+            <span class="zh">课程设计作品，运用面向对象思想完成一个小型系统</span>
+            <span class="en">A small system built with OOP principles for a course project</span>
+          </p>
+          <div class="project-tags">
+            <span class="tag tag-small">C++</span>
+            <span class="tag tag-small">OOP</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-status">
+            <span class="status-badge">
+              <span class="zh">进行中</span><span class="en">In Progress</span>
+            </span>
+          </div>
+          <h3 class="project-title">
+            <span class="zh">个人技术网站</span>
+            <span class="en">Personal Website</span>
+          </h3>
+          <p class="project-desc">
+            <span class="zh">就是你现在看到的这个！纯 HTML/CSS/JS 手写，记录学习成长</span>
+            <span class="en">The one you're looking at! Hand-coded with HTML/CSS/JS, documenting my journey</span>
+          </p>
+          <div class="project-tags">
+            <span class="tag tag-small">HTML</span>
+            <span class="tag tag-small">CSS</span>
+            <span class="tag tag-small">JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 博客文章 ===== -->
+  <section id="blog" class="section section-alt">
+    <div class="container">
+      <h2 class="section-title reveal">
+        <span class="zh">博客文章</span><span class="en">Blog</span>
+      </h2>
+      <p class="section-subtitle reveal">
+        <span class="zh">文章还在酝酿中，以下是我计划写的主题 📝</span>
+        <span class="en">Articles are brewing — here's what I plan to write about 📝</span>
+      </p>
+      <div class="blog-list">
+        <article class="blog-item reveal">
+          <div class="blog-date">
+            <span class="zh">计划中</span><span class="en">Planned</span>
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">
+              <span class="zh">我的第一行 C 代码</span>
+              <span class="en">My First Line of C Code</span>
+            </h3>
+            <p class="blog-excerpt">
+              <span class="zh">回忆从零开始接触编程的那个瞬间，以及 Hello World 背后的故事</span>
+              <span class="en">Looking back at the moment I first touched code, and the story behind Hello World</span>
+            </p>
+            <div class="blog-tags">
+              <span class="tag tag-small">C</span>
+              <span class="tag tag-small">
+                <span class="zh">入门</span><span class="en">Beginner</span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-item reveal">
+          <div class="blog-date">
+            <span class="zh">计划中</span><span class="en">Planned</span>
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">
+              <span class="zh">C++ vs Java：一个初学者的真实感受</span>
+              <span class="en">C++ vs Java: A Beginner's Honest Take</span>
+            </h3>
+            <p class="blog-excerpt">
+              <span class="zh">从语法、思维方式到开发体验，对比两门语言的真实使用感受</span>
+              <span class="en">Comparing syntax, mindset and dev experience between the two languages</span>
+            </p>
+            <div class="blog-tags">
+              <span class="tag tag-small">C++</span>
+              <span class="tag tag-small">Java</span>
+              <span class="tag tag-small">
+                <span class="zh">对比</span><span class="en">Comparison</span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-item reveal">
+          <div class="blog-date">
+            <span class="zh">计划中</span><span class="en">Planned</span>
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">
+              <span class="zh">大一计算机生，我为什么选择后端方向</span>
+              <span class="en">Why I Chose Backend as a CS Freshman</span>
+            </h3>
+            <p class="blog-excerpt">
+              <span class="zh">从前端到后端，从算法到工程，聊聊我选择技术方向的心路历程</span>
+              <span class="en">From frontend to backend, from algorithms to engineering — my thought process</span>
+            </p>
+            <div class="blog-tags">
+              <span class="tag tag-small">
+                <span class="zh">思考</span><span class="en">Thoughts</span>
+              </span>
+              <span class="tag tag-small">
+                <span class="zh">职业规划</span><span class="en">Career</span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-item reveal">
+          <div class="blog-date">
+            <span class="zh">计划中</span><span class="en">Planned</span>
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">
+              <span class="zh">从零搭建个人网站踩坑记</span>
+              <span class="en">Building a Personal Website from Scratch</span>
+            </h3>
+            <p class="blog-excerpt">
+              <span class="zh">记录这个网站从设计到上线的全过程，分享踩过的坑和学到的东西</span>
+              <span class="en">Documenting the journey from design to deployment — pitfalls and lessons learned</span>
+            </p>
+            <div class="blog-tags">
+              <span class="tag tag-small">HTML</span>
+              <span class="tag tag-small">CSS</span>
+              <span class="tag tag-small">
+                <span class="zh">实战</span><span class="en">Hands-on</span>
+              </span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 联系方式 ===== -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">
+        <span class="zh">联系方式</span><span class="en">Get in Touch</span>
+      </h2>
+      <p class="section-subtitle reveal">
+        <span class="zh">有什么想聊的？随时找我 👇</span>
+        <span class="en">Want to chat? Reach out anytime 👇</span>
+      </p>
+      <div class="contact-grid">
+        <a href="mailto:2690448119@qq.com" class="contact-card reveal">
+          <div class="contact-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3 class="contact-label">Email</h3>
+          <p class="contact-value">2690448119@qq.com</p>
+          <p class="contact-hint">
+            <span class="zh">点击发送邮件</span><span class="en">Click to send email</span>
+          </p>
+        </a>
+
+        <div class="contact-card reveal">
+          <div class="contact-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <h3 class="contact-label">WeChat</h3>
+          <p class="contact-value">
+            <span class="zh">微信号：z2690448119</span><span class="en">WeChat ID: z2690448119</span>
+          </p>
+          <p class="contact-hint">
+            <span class="zh">搜索添加好友</span><span class="en">Search to add friend</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">
+        <span class="zh">© 2025 张淋静 · 用 ❤️ 和代码构建</span>
+        <span class="en">© 2025 Zhang Linjing · Built with ❤️ and code</span>
+      </p>
+      <p class="footer-slogan">Code is poetry, bugs are plot twists.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
