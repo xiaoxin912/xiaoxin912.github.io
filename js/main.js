@@ -129,9 +129,16 @@
 
   /* ===== 打字机效果 ===== */
   const typewriterEl = document.querySelector('.typewriter');
+  var typewriterTimer = null;
 
   function runTypewriter() {
     if (!typewriterEl) return;
+
+    // 清除旧的打字循环，防止新旧循环同时写入导致中英文混杂
+    if (typewriterTimer) {
+      clearTimeout(typewriterTimer);
+      typewriterTimer = null;
+    }
 
     var currentLang = html.getAttribute('lang') || 'zh';
     var text = currentLang === 'zh'
@@ -145,7 +152,9 @@
       if (i < text.length) {
         typewriterEl.textContent += text.charAt(i);
         i++;
-        setTimeout(type, 80);
+        typewriterTimer = setTimeout(type, 80);
+      } else {
+        typewriterTimer = null;
       }
     }
 
@@ -174,3 +183,68 @@
   }, { passive: true });
 
 })();
+
+/* ===== 联系方式交互 ===== */
+
+// 复制到剪贴板
+function copyToClipboard(text, btn) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function () {
+      showCopied(btn);
+    }).catch(function () {
+      fallbackCopy(text, btn);
+    });
+  } else {
+    fallbackCopy(text, btn);
+  }
+}
+
+function fallbackCopy(text, btn) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); } catch (e) {}
+  document.body.removeChild(ta);
+  showCopied(btn);
+}
+
+function showCopied(btn) {
+  if (!btn) return;
+  var zhSpan = btn.querySelector('.zh');
+  var enSpan = btn.querySelector('.en');
+  var origZh = zhSpan ? zhSpan.textContent : '';
+  var origEn = enSpan ? enSpan.textContent : '';
+  btn.classList.add('copied');
+  if (zhSpan) zhSpan.textContent = '已复制';
+  if (enSpan) enSpan.textContent = 'Copied';
+  setTimeout(function () {
+    btn.classList.remove('copied');
+    if (zhSpan) zhSpan.textContent = origZh;
+    if (enSpan) enSpan.textContent = origEn;
+  }, 1500);
+}
+
+// 微信卡片翻转
+function toggleWechatFlip(card) {
+  if (card) card.classList.toggle('flipped');
+}
+
+// 给所有 .flip-trigger 按钮绑定翻转事件
+document.querySelectorAll('.flip-trigger').forEach(function (btn) {
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var card = btn.closest('.flip-card');
+    toggleWechatFlip(card);
+  });
+});
+
+// 点击卡片本身（不在按钮上）也翻转
+document.querySelectorAll('.flip-card').forEach(function (card) {
+  card.addEventListener('click', function (e) {
+    if (e.target.closest('.contact-action-btn')) return;
+    toggleWechatFlip(card);
+  });
+});
